@@ -10,7 +10,7 @@ jobs:
     permissions:
       contents: write # for git push
     runs-on: ubuntu-latest
-    if: github.repository == 'termux-play-store/termux-packages'
+
     steps:
       - name: Git clone
         uses: actions/checkout@v4
