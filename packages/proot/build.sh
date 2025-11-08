@@ -20,6 +20,7 @@ export PROOT_UNBUNDLE_LOADER=${TERMUX_PREFIX%/usr}/applib
 
 termux_step_pre_configure() {
 	CPPFLAGS+=" -DARG_MAX=131072"
+	LDFLAGS+=" -Wl,-z,max-page-size=16384"
 }
 
 termux_step_post_make_install() {
