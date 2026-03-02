@@ -485,7 +485,7 @@ __termux_build_props__add_variables_validator_actions "TERMUX_APP__PACKAGE_NAME"
 #
 # Default value: `/data/user/0/com.termux`
 ##
-TERMUX_APP__DATA_DIR="/data/data/$TERMUX_APP__PACKAGE_NAME"
+TERMUX_APP__DATA_DIR="/data/user/0/$TERMUX_APP__PACKAGE_NAME"
 __termux_build_props__add_variables_validator_actions "TERMUX_APP__DATA_DIR" "safe_absolute_path"
 
 ##
