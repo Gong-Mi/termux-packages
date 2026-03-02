@@ -88,7 +88,7 @@ termux_step_pre_configure() {
 
 	# assist with downstream patch methods that bulk-replace
 	# string 'com.termux' throughout the repository
-	local original_prefix_component_one="/data/data/com."
+	local original_prefix_component_one="/data/user/0/com."
 	local original_prefix_component_two="termux/files/usr"
 	local original_prefix="${original_prefix_component_one}${original_prefix_component_two}"
 	if [[ "$TERMUX_PREFIX" != "$original_prefix" ]]; then

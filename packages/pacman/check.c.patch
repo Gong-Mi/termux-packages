@@ -69,7 +69,7 @@
  		file_count++;
  
 +		// On Android there is no point in checking these directories
-+		if (strcmp(filepath, "/data") == 0 || strcmp(filepath, "/data/data") == 0)
++		if (strcmp(filepath, "/data") == 0 || strcmp(filepath, "/data/user/0") == 0)
 +			continue;
 +
  		exists = check_file_exists(pkgname, filepath, rootlen, &st);

@@ -248,7 +248,7 @@ TERMUX_REGEX__APP_PACKAGE_NAME="^[a-zA-Z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)+
 # Regex to match an android app data path.
 #
 # The supported formats are:
-# - `/data/data/<package_name>` (for primary user `0`) if app is to be
+# - `/data/user/0/<package_name>` (for primary user `0`) if app is to be
 #   installed on internal sd.
 # - `/data/user/<user_id>/<package_name>` (for all users) if app is to
 #   be installed on internal sd.
@@ -258,7 +258,7 @@ TERMUX_REGEX__APP_PACKAGE_NAME="^[a-zA-Z][a-zA-Z0-9_]*(\.[a-zA-Z][a-zA-Z0-9_]*)+
 #
 # - https://github.com/termux/termux-packages/wiki/Termux-file-system-layout#termux-private-app-data-directory
 ##
-TERMUX_REGEX__APP_DATA_DIR_PATH='^(((/data/data)|(/data/user/[0-9]+)|(/mnt/expand/[^/]+/user/[0-9]+))/[^/]+)$'
+TERMUX_REGEX__APP_DATA_DIR_PATH='^(((/data/user/0)|(/data/user/[0-9]+)|(/mnt/expand/[^/]+/user/[0-9]+))/[^/]+)$'
 
 
 
@@ -2284,7 +2284,7 @@ __termux_build_props__validate_variables() {
 
     if [[ ! "$TERMUX_APP__DATA_DIR" =~ ${TERMUX_REGEX__APP_DATA_DIR_PATH:?} ]]; then
         echo "The TERMUX_APP__DATA_DIR '$TERMUX_APP__DATA_DIR' with length ${#TERMUX_APP__DATA_DIR} is invalid." 1>&2
-        echo "The TERMUX_APP__DATA_DIR must match \`/data/data/<package_name>\`, \`/data/user/<user_id>/<package_name>\` \
+        echo "The TERMUX_APP__DATA_DIR must match \`/data/user/0/<package_name>\`, \`/data/user/<user_id>/<package_name>\` \
 or \`/mnt/expand/<volume_uuid>/user/<user_id>/<package_name>\` formats." 1>&2
         return 1
     fi

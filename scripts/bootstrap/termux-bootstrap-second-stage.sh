@@ -29,7 +29,7 @@ Available command_options:
 
 The Termux app runs the bootstrap installion first stage by extracting
 the bootstrap packages manually to the Termux rootfs directory under
-private app data directory `/data/data/<package_name>` without using
+private app data directory `/data/user/0/<package_name>` without using
 the package managers like (`apt`/`dpkg` or `pacman`) to install
 packages, as they are also part of the bootstrap.
 Due to manual extraction, package configuration may not be properly
@@ -242,7 +242,7 @@ run_package_postinst_maintainer_scripts() {
 					# normally used without `--force-script-chrootless`
 					# flag.
 					# Note that Termux rootfs is under private app
-					# data directory `/data/data/<package_name>,`
+					# data directory `/data/user/0/<package_name>,`
 					# which may cause problems for packages which try
 					# to use Android rootfs paths instead of Termux
 					# rootfs paths.
@@ -335,7 +335,7 @@ run_package_postinst_maintainer_scripts() {
 					# Termux pacman package and only current working
 					# directory is changed to the Android rootfs `/`.
 					# Note that Termux rootfs is under private app
-					# data directory `/data/data/<package_name>,`
+					# data directory `/data/user/0/<package_name>,`
 					# which may cause problems for packages which try
 					# to use Android rootfs paths instead of Termux
 					# rootfs paths.

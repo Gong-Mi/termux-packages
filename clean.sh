@@ -90,7 +90,7 @@ fi
 		fi
 
 		# Remove list of built packages.
-		rm -Rf "/data/data/.built-packages"
+		rm -Rf "/data/user/0/.built-packages"
 	fi
 
 	rm -Rf "$TERMUX_TOPDIR"

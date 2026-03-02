@@ -1,6 +1,6 @@
 Handle EROFS.  This is since path_remove_tree() will be called with
        '/data.dpkg-tmp'
-       '/data/data.dpkg-tmp'
+       '/data/user/0.dpkg-tmp'
        '/data/user/0/com.termux.dpkg-tmp'
        '/data/user/0/com.termux/files.dpkg-tmp'
        '/data/user/0/com.termux/files/usr.dpkg-tmp'
