@@ -15,16 +15,16 @@ termux_step_handle_buildarch() {
 			if test -e "$TERMUX_DATA_PREVIOUS_BACKUPDIR"; then
 				termux_error_exit "Directory already exists"
 			fi
-			if [ -d /data/user/0 ]; then
-				mv /data/user/0 "$TERMUX_DATA_PREVIOUS_BACKUPDIR"
+			if [ -d /data/data ]; then
+				mv /data/data "$TERMUX_DATA_PREVIOUS_BACKUPDIR"
 				if [ -d "${TERMUX_DATA_PREVIOUS_BACKUPDIR}/${TERMUX_APP_PACKAGE}/cgct" ]; then
-					mkdir -p "/data/user/0/${TERMUX_APP_PACKAGE}"
-					mv "${TERMUX_DATA_PREVIOUS_BACKUPDIR}/${TERMUX_APP_PACKAGE}/cgct" "/data/user/0/${TERMUX_APP_PACKAGE}"
+					mkdir -p "/data/data/${TERMUX_APP_PACKAGE}"
+					mv "${TERMUX_DATA_PREVIOUS_BACKUPDIR}/${TERMUX_APP_PACKAGE}/cgct" "/data/data/${TERMUX_APP_PACKAGE}"
 				fi
 			fi
 			# Restore new one (if any)
 			if [ -d "$TERMUX_DATA_CURRENT_BACKUPDIR" ]; then
-				mv "$TERMUX_DATA_CURRENT_BACKUPDIR" /data/user/0
+				mv "$TERMUX_DATA_CURRENT_BACKUPDIR" /data/data
 			fi
 		fi
 	fi
