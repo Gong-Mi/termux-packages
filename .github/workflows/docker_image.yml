@@ -55,13 +55,15 @@ jobs:
     - name: Build
       if: ${{ steps.skip-build.outputs.skip-build != 'true' }}
       run: |
-        docker build --tag ${{ github.repository_owner }}/package-builder:latest scripts/
-        docker tag ${{ github.repository_owner }}/package-builder:latest ghcr.io/${{ github.repository_owner }}/package-builder:latest
+        IMAGE_NAME=$(echo "${{ github.repository_owner }}/package-builder" | tr '[:upper:]' '[:lower:]')
+        docker build --tag "$IMAGE_NAME:latest" scripts/
+        docker tag "$IMAGE_NAME:latest" "ghcr.io/$IMAGE_NAME:latest"
     - name: Build (CGCT)
       if: ${{ steps.skip-build.outputs.skip-build != 'true' }}
       run: |
-        docker build --tag ${{ github.repository_owner }}/package-builder-cgct:latest --file scripts/Dockerfile.cgct scripts/
-        docker tag ${{ github.repository_owner }}/package-builder-cgct:latest ghcr.io/${{ github.repository_owner }}/package-builder-cgct:latest
+        IMAGE_NAME=$(echo "${{ github.repository_owner }}/package-builder-cgct" | tr '[:upper:]' '[:lower:]')
+        docker build --tag "$IMAGE_NAME:latest" --file scripts/Dockerfile.cgct scripts/
+        docker tag "$IMAGE_NAME:latest" "ghcr.io/$IMAGE_NAME:latest"
     - name: Login to GHCR
       if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request' && steps.skip-build.outputs.skip-build != 'true'
 
@@ -78,8 +80,9 @@ jobs:
         # is to retry again 1 or 2 more times.
         for registry in "ghcr.io/"; do
           for image in package-builder package-builder-cgct; do
+            IMAGE_NAME=$(echo "${{ github.repository_owner }}/${image}" | tr '[:upper:]' '[:lower:]')
             for t in 1 2 3; do
-              if docker push "${registry}${{ github.repository_owner }}/${image}:latest"; then
+              if docker push "${registry}${IMAGE_NAME}:latest"; then
                 break
               else
                 if [ "$t" = "3" ]; then
