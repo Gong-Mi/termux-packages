@@ -16,6 +16,8 @@ jobs:
     permissions:
       contents: read # actions/upload-artifact doesn't need contents: write
     runs-on: ubuntu-slim
+    container:
+      image: ghcr.io/gong-mi/package-builder:latest
     strategy:
       matrix:
         arch:
